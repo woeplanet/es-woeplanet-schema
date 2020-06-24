@@ -1,0 +1,266 @@
+{
+    "settings": {
+        "index": {
+            "max_ngram_diff": 13
+        },
+        "analysis": {
+            "char_filter": {
+                "zwj_char_filter": {
+                    "type": "mapping",
+                    "mappings": [
+                        "\\u200D=>"
+                    ]
+                }
+            },
+            "filter": {
+                "punctuation_filter": {
+                    "type": "pattern_replace",
+                    "pattern": "\\p{Punct}|\\uFE0E|\\uFE0F|\\uD83C\\uDFFB|\\uD83C\\uDFFC|\\uD83C\\uDFFD|\\uD83C\\uDFFE|\\uD83C\\uDFFF",
+                    "replace": ""
+                },
+                "remove_empty_filter": {
+                    "type": "length",
+                    "min": 1
+                },
+                "snowball_eng" : {
+                    "type" : "snowball",
+                    "language" : "English"
+                },
+                "ngram":{
+                    "type": "ngram",
+                    "min_gram": 2,
+                    "max_gram": 15
+                }
+            },
+            "analyzer": {
+                "english": {
+                    "char_filter": "zwj_char_filter",
+                    "tokenizer": "whitespace",
+                    "filter": [
+                        "lowercase",
+                        "punctuation_filter",
+                        "remove_empty_filter",
+                        "snowball_eng"
+                    ]
+                },
+                "autocomplete":{
+                    "type": "custom",
+                    "tokenizer": "standard",
+                    "filter": [ "lowercase", "stop", "kstem", "ngram" ]
+                }
+            }
+        }
+    },
+    "mappings": {
+        "dynamic_templates": [
+            {
+                "names_x_preferred": {
+                    "match_pattern": "regex",
+                    "match": "^woe:alias_.*_[PQ]$",
+                    "mapping": {
+                        "type": "text",
+                        "copy_to": [ "names_preferred"]
+                    }
+                }
+            },
+            {
+                "names_x_variant": {
+                    "match_pattern": "regex",
+                    "match": "^woe:alias_.*_V$",
+                    "mapping": {
+                        "type": "text",
+                        "copy_to": [ "names_alt", "names_variant"]
+                    }
+                }
+            },
+            {
+                "names_x_colloquial": {
+                    "match_pattern": "regex",
+                    "match": "^woe:alias_.*_S$",
+                    "mapping": {
+                        "type": "text",
+                        "copy_to": [ "names_alt", "names_colloquial"]
+                    }
+                }
+            },
+            {
+                "names_x_unknown": {
+                    "match_pattern": "regex",
+                    "match": "^woe:alias_UNK_[PQVSA]$",
+                    "mapping": {
+                        "type": "text",
+                        "copy_to": "names_alt"
+                    }
+                }
+            },
+            {
+                "names_x_all": {
+                    "match_pattern": "regex",
+                    "match": "^woe:alias_.*_.*$",
+                    "match_mapping_type": "string",
+                    "mapping": {
+                        "type": "text",
+                        "copy_to": [ "names_all", "names_autocomplete"]
+                    }
+                }
+            }
+        ],
+        "properties" : {
+            "names_all": {
+                "type": "text",
+                "analyzer": "english",
+                "search_analyzer": "english"
+            },
+            "names_alt": {
+                "type": "text",
+                "analyzer": "english",
+                "search_analyzer": "english"
+            },
+            "names_autocomplete": {
+                "type": "text",
+                "analyzer": "autocomplete",
+                "boost": 10
+            },
+            "names_colloquial": {
+                "type": "text",
+                "analyzer": "english",
+                "search_analyzer": "english"
+            },
+            "names_preferred": {
+                "type": "text",
+                "analyzer": "english",
+                "search_analyzer": "english"
+            },
+            "names_variant": {
+                "type": "text",
+                "analyzer": "english",
+                "search_analyzer": "english"
+            },
+            "names_not_analyzed": {
+                "type": "text",
+                "index": false
+            },
+            "geometry" : {
+                "type": "geo_shape"
+            },
+            "geom:bbox" : {
+                "type" : "float"
+            },
+            "geom:centroid" : {
+                "type" : "float"
+            },
+            "geom:latitude" : {
+                "type" : "float"
+            },
+            "geom:longitude" : {
+                "type" : "float"
+            },
+            "geom:max_latitude" : {
+                "type" : "float"
+            },
+            "geom:max_longitude" : {
+                "type" : "float"
+            },
+            "geom:min_latitude" : {
+                "type" : "float"
+            },
+            "geom:min_longitude" : {
+                "type" : "float"
+            },
+            "geom:hash": {
+                "type": "text"
+            },
+            "iso:country" : {
+                "type" : "text"
+            },
+            "iso:country3" : {
+                "type" : "text"
+            },
+            "meta:indexed": {
+                "type": "date",
+                "format": "strict_date_optional_time"
+            },
+            "meta:provider" : {
+                "type" : "text"
+            },
+            "meta:updated": {
+                "type": "date",
+                "format": "strict_date_optional_time"
+            },
+            "woe:concordances" : {
+                "properties" : {
+                    "fs:id": {
+                        "type": "text"
+                    },
+                    "gn:id" : {
+                        "type" : "long"
+                    },
+                    "qs:id" : {
+                        "type" : "long"
+                    }
+                }
+            },
+            "woe:hierarchy" : {
+                "properties" : {
+                    "continent_id" : {
+                        "type" : "long"
+                    },
+                    "country_id" : {
+                        "type" : "long"
+                    },
+                    "state_id" : {
+                        "type" : "long"
+                    },
+                    "county_id" : {
+                        "type" : "long"
+                    },
+                    "localadmin_id" : {
+                        "type" : "long"
+                    }
+                }
+            },
+            "woe:lang" : {
+                "type" : "text",
+                "fields" : {
+                    "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                    }
+                }
+            },
+            "woe:name" : {
+                "type" : "text",
+                "analyzer": "english",
+                "search_analyzer": "english",
+                "copy_to": [ "names_all", "names_not_analyzed", "names_autocomplete" ]
+            },
+            "woe:placetype" : {
+                "type" : "long"
+            },
+            "woe:placetype_name" : {
+                "type" : "text"
+            },
+            "woe:timezone_id" : {
+                "type" : "long"
+            },
+            "woe:id" : {
+                "type" : "long"
+            },
+            "woe:adjacent" : {
+                "type" : "long"
+            },
+            "woe:parent_id" : {
+                "type" : "long"
+            },
+            "woe:repo": {
+                "type": "text"
+            },
+            "woe:superseded_by" : {
+                "type" : "long"
+            },
+            "woe:supersedes" : {
+                "type" : "long"
+            }
+        }
+    }
+}

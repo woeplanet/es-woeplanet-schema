@@ -1,0 +1,30 @@
+{
+    "settings": {
+        "analysis": {
+            "normalizer": {
+                "keyword_lowercase": {
+                    "type": "custom",
+                    "filter": [ "lowercase" ]
+                }
+            }
+        }
+    },
+    "mappings": {
+        "properties": {
+            "id": {
+                "type": "long"
+            },
+            "name":  {
+                "type": "text"
+            },
+            "shortname": {
+                "type": "keyword",
+                "normalizer": "keyword_lowercase"
+            },
+            "description": {
+                "type": "text",
+                "index": false
+            }
+        }
+    }
+}
