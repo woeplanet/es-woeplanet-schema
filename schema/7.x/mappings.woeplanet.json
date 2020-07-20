@@ -140,6 +140,39 @@
                 "type": "text",
                 "index": false
             },
+
+            "fs:bbox" : {
+                "type" : "float"
+            },
+            "fs:centroid" : {
+                "type" : "float"
+            },
+            "fs:latitude" : {
+                "type" : "float"
+            },
+            "fs:longitude" : {
+                "type" : "float"
+            },
+            "fs:max_latitude" : {
+                "type" : "float"
+            },
+            "fs:max_longitude" : {
+                "type" : "float"
+            },
+            "fs:min_latitude" : {
+                "type" : "float"
+            },
+            "fs:min_longitude" : {
+                "type" : "float"
+            },
+            "fs:hash": {
+                "type": "text"
+            },
+            "fs:label": {
+                "type" : "text",
+                "analyzer": "english",
+                "search_analyzer": "english"
+            },
             "geometry" : {
                 "type": "geo_shape"
             },
@@ -186,6 +219,60 @@
             "meta:updated": {
                 "type": "date",
                 "format": "strict_date_optional_time"
+            },
+            "ne:bbox" : {
+                "type" : "float"
+            },
+            "ne:centroid" : {
+                "type" : "float"
+            },
+            "ne:latitude" : {
+                "type" : "float"
+            },
+            "ne:longitude" : {
+                "type" : "float"
+            },
+            "ne:max_latitude" : {
+                "type" : "float"
+            },
+            "ne:max_longitude" : {
+                "type" : "float"
+            },
+            "ne:min_latitude" : {
+                "type" : "float"
+            },
+            "ne:min_longitude" : {
+                "type" : "float"
+            },
+            "ne:hash": {
+                "type": "text"
+            },
+            "qs:bbox" : {
+                "type" : "float"
+            },
+            "qs:centroid" : {
+                "type" : "float"
+            },
+            "qs:latitude" : {
+                "type" : "float"
+            },
+            "qs:longitude" : {
+                "type" : "float"
+            },
+            "qs:max_latitude" : {
+                "type" : "float"
+            },
+            "qs:max_longitude" : {
+                "type" : "float"
+            },
+            "qs:min_latitude" : {
+                "type" : "float"
+            },
+            "qs:min_longitude" : {
+                "type" : "float"
+            },
+            "qs:hash": {
+                "type": "text"
             },
             "woe:concordances" : {
                 "properties" : {
@@ -252,14 +339,41 @@
             "woe:parent_id" : {
                 "type" : "long"
             },
-            "woe:repo": {
-                "type": "text"
-            },
             "woe:superseded_by" : {
                 "type" : "long"
             },
             "woe:supersedes" : {
                 "type" : "long"
+            },
+            "woe:repo": {
+                "type": "keyword"
+            },
+            "woe:bbox" : {
+                "type" : "float"
+            },
+            "woe:centroid" : {
+                "type" : "float"
+            },
+            "woe:latitude" : {
+                "type" : "float"
+            },
+            "woe:longitude" : {
+                "type" : "float"
+            },
+            "woe:max_latitude" : {
+                "type" : "float"
+            },
+            "woe:max_longitude" : {
+                "type" : "float"
+            },
+            "woe:min_latitude" : {
+                "type" : "float"
+            },
+            "woe:min_longitude" : {
+                "type" : "float"
+            },
+            "woe:hash": {
+                "type": "text"
             }
         }
     }
