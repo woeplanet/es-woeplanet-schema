@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-WHOAMI=`python -c 'import os, sys; print os.path.realpath(sys.argv[1])' $0`
+WHOAMI=`python -c 'import os, sys; print(os.path.realpath(sys.argv[1]))' $0`
 DIR=`dirname $WHOAMI`
 PROJECT=`dirname $DIR`
 ALIAS='woeplanet'

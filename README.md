@@ -27,7 +27,7 @@ Each index is date-stamped in YYYYMMDD format with a date-less alias pointing to
 ### Creating a New Index
 
 ```
-$ cat ./schema/7.7/mappings.woeplanet.json | curl -s -XPUT http://localhost:9200/woeplanet_20200601 -H "Content-Type: application/json" -d @- | python -mjson.tool
+$ cat ./schema/7.x/mappings.woeplanet.json | curl -s -XPUT http://localhost:9200/woeplanet_20200601 -H "Content-Type: application/json" -d @- | python -mjson.tool
 {
     "acknowledged": true,
     "index": "woeplanet_20200601",
@@ -73,6 +73,6 @@ Aliasing 'placetypes_20200621' as 'placetypes'
 ```
 
 ```
-$ cat schema/7.7/mappings.woeplanet.json | curl -X PUT http://localhost:9200/woeplanet_20200619 -H 'Content-Type: application/json' -d @-
+$ cat schema/7.x/mappings.woeplanet.json | curl -X PUT http://localhost:9200/woeplanet_20200619 -H 'Content-Type: application/json' -d @-
 $ curl -X POST http://localhost:9200/_aliases -H 'Content-Type: application/json' -d '{"actions":[{"add":{"alias": "woeplanet", "index": "woeplanet_20200619"}}]}'
 ```
