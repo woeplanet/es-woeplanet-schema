@@ -22,11 +22,11 @@
                     "type": "length",
                     "min": 1
                 },
-                "snowball_eng" : {
-                    "type" : "snowball",
-                    "language" : "English"
+                "snowball_eng": {
+                    "type": "snowball",
+                    "language": "English"
                 },
-                "ngram":{
+                "ngram": {
                     "type": "ngram",
                     "min_gram": 2,
                     "max_gram": 15
@@ -43,10 +43,15 @@
                         "snowball_eng"
                     ]
                 },
-                "autocomplete":{
+                "autocomplete": {
                     "type": "custom",
                     "tokenizer": "standard",
-                    "filter": [ "lowercase", "stop", "kstem", "ngram" ]
+                    "filter": [
+                        "lowercase",
+                        "stop",
+                        "kstem",
+                        "ngram"
+                    ]
                 }
             }
         }
@@ -59,7 +64,9 @@
                     "match": "^woe:alias_.*_[PQ]$",
                     "mapping": {
                         "type": "text",
-                        "copy_to": [ "names_preferred"]
+                        "copy_to": [
+                            "names_preferred"
+                        ]
                     }
                 }
             },
@@ -69,7 +76,10 @@
                     "match": "^woe:alias_.*_V$",
                     "mapping": {
                         "type": "text",
-                        "copy_to": [ "names_alt", "names_variant"]
+                        "copy_to": [
+                            "names_alt",
+                            "names_variant"
+                        ]
                     }
                 }
             },
@@ -79,7 +89,10 @@
                     "match": "^woe:alias_.*_S$",
                     "mapping": {
                         "type": "text",
-                        "copy_to": [ "names_alt", "names_colloquial"]
+                        "copy_to": [
+                            "names_alt",
+                            "names_colloquial"
+                        ]
                     }
                 }
             },
@@ -100,12 +113,15 @@
                     "match_mapping_type": "string",
                     "mapping": {
                         "type": "text",
-                        "copy_to": [ "names_all", "names_autocomplete"]
+                        "copy_to": [
+                            "names_all",
+                            "names_autocomplete"
+                        ]
                     }
                 }
             }
         ],
-        "properties" : {
+        "properties": {
             "names_all": {
                 "type": "text",
                 "analyzer": "english",
@@ -140,237 +156,358 @@
                 "type": "text",
                 "index": false
             },
-
-            "fs:bbox" : {
-                "type" : "float"
+            "fs:bbox": {
+                "type": "float"
             },
-            "fs:centroid" : {
-                "type" : "float"
+            "fs:centroid": {
+                "type": "float"
             },
-            "fs:latitude" : {
-                "type" : "float"
+            "fs:latitude": {
+                "type": "float"
             },
-            "fs:longitude" : {
-                "type" : "float"
+            "fs:longitude": {
+                "type": "float"
             },
-            "fs:max_latitude" : {
-                "type" : "float"
+            "fs:max_latitude": {
+                "type": "float"
             },
-            "fs:max_longitude" : {
-                "type" : "float"
+            "fs:max_longitude": {
+                "type": "float"
             },
-            "fs:min_latitude" : {
-                "type" : "float"
+            "fs:min_latitude": {
+                "type": "float"
             },
-            "fs:min_longitude" : {
-                "type" : "float"
+            "fs:min_longitude": {
+                "type": "float"
             },
             "fs:hash": {
                 "type": "text"
             },
             "fs:label": {
-                "type" : "text",
+                "type": "text",
                 "analyzer": "english",
                 "search_analyzer": "english"
             },
-            "geometry" : {
+            "geometry": {
                 "type": "geo_shape"
             },
-            "geom:bbox" : {
-                "type" : "float"
+            "geom:bbox": {
+                "type": "float"
             },
-            "geom:centroid" : {
-                "type" : "float"
+            "geom:centroid": {
+                "type": "float"
             },
-            "geom:latitude" : {
-                "type" : "float"
+            "geom:latitude": {
+                "type": "float"
             },
-            "geom:longitude" : {
-                "type" : "float"
+            "geom:longitude": {
+                "type": "float"
             },
-            "geom:max_latitude" : {
-                "type" : "float"
+            "geom:max_latitude": {
+                "type": "float"
             },
-            "geom:max_longitude" : {
-                "type" : "float"
+            "geom:max_longitude": {
+                "type": "float"
             },
-            "geom:min_latitude" : {
-                "type" : "float"
+            "geom:min_latitude": {
+                "type": "float"
             },
-            "geom:min_longitude" : {
-                "type" : "float"
+            "geom:min_longitude": {
+                "type": "float"
             },
             "geom:hash": {
                 "type": "text"
             },
-            "iso:country" : {
-                "type" : "text"
+            "iso:country": {
+                "type": "text"
             },
-            "iso:country3" : {
-                "type" : "text"
+            "iso:country3": {
+                "type": "text"
             },
             "meta:indexed": {
                 "type": "date",
                 "format": "strict_date_optional_time"
             },
-            "meta:provider" : {
-                "type" : "text"
+            "meta:provider": {
+                "type": "text"
             },
             "meta:updated": {
                 "type": "date",
                 "format": "strict_date_optional_time"
             },
-            "ne:bbox" : {
-                "type" : "float"
+            "ne:bbox": {
+                "type": "float"
             },
-            "ne:centroid" : {
-                "type" : "float"
+            "ne:centroid": {
+                "type": "float"
             },
-            "ne:latitude" : {
-                "type" : "float"
+            "ne:latitude": {
+                "type": "float"
             },
-            "ne:longitude" : {
-                "type" : "float"
+            "ne:longitude": {
+                "type": "float"
             },
-            "ne:max_latitude" : {
-                "type" : "float"
+            "ne:max_latitude": {
+                "type": "float"
             },
-            "ne:max_longitude" : {
-                "type" : "float"
+            "ne:max_longitude": {
+                "type": "float"
             },
-            "ne:min_latitude" : {
-                "type" : "float"
+            "ne:min_latitude": {
+                "type": "float"
             },
-            "ne:min_longitude" : {
-                "type" : "float"
+            "ne:min_longitude": {
+                "type": "float"
             },
             "ne:hash": {
                 "type": "text"
             },
-            "qs:bbox" : {
-                "type" : "float"
+            "qs:bbox": {
+                "type": "float"
             },
-            "qs:centroid" : {
-                "type" : "float"
+            "qs:centroid": {
+                "type": "float"
             },
-            "qs:latitude" : {
-                "type" : "float"
+            "qs:latitude": {
+                "type": "float"
             },
-            "qs:longitude" : {
-                "type" : "float"
+            "qs:longitude": {
+                "type": "float"
             },
-            "qs:max_latitude" : {
-                "type" : "float"
+            "qs:max_latitude": {
+                "type": "float"
             },
-            "qs:max_longitude" : {
-                "type" : "float"
+            "qs:max_longitude": {
+                "type": "float"
             },
-            "qs:min_latitude" : {
-                "type" : "float"
+            "qs:min_latitude": {
+                "type": "float"
             },
-            "qs:min_longitude" : {
-                "type" : "float"
+            "qs:min_longitude": {
+                "type": "float"
             },
             "qs:hash": {
                 "type": "text"
             },
-            "woe:concordances" : {
-                "properties" : {
+            "woe:concordances": {
+                "properties": {
                     "fs:id": {
                         "type": "text"
                     },
-                    "gn:id" : {
-                        "type" : "long"
+                    "gn:id": {
+                        "type": "long"
                     },
-                    "qs:id" : {
-                        "type" : "long"
+                    "qs:id": {
+                        "type": "long"
+                    },
+                    "iata:code": {
+                        "type": "text"
+                    },
+                    "wof:id": {
+                        "type": "long"
+                    },
+                    "wikipedia:id": {
+                        "type": "long"
                     }
                 }
             },
-            "woe:hierarchy" : {
-                "properties" : {
-                    "continent_id" : {
-                        "type" : "long"
+            "woe:hierarchy": {
+                "properties": {
+                    "planet": {
+                        "type": "long"
                     },
-                    "country_id" : {
-                        "type" : "long"
+                    "continent": {
+                        "type": "long"
                     },
-                    "state_id" : {
-                        "type" : "long"
+                    "region": {
+                        "type": "long"
                     },
-                    "county_id" : {
-                        "type" : "long"
+                    "country": {
+                        "type": "long"
                     },
-                    "localadmin_id" : {
-                        "type" : "long"
+                    "state": {
+                        "type": "long"
+                    },
+                    "county": {
+                        "type": "long"
+                    },
+                    "localadmin": {
+                        "type": "long"
+                    },
+                    "town": {
+                        "type": "long"
+                    },
+                    "suburb": {
+                        "type": "long"
                     }
                 }
             },
-            "woe:lang" : {
-                "type" : "text",
-                "fields" : {
-                    "keyword" : {
-                        "type" : "keyword",
-                        "ignore_above" : 256
+            "woe:children": {
+                "properties": {
+                    "poi": {
+                        "type": "long"
+                    },
+                    "zip": {
+                        "type": "long"
+                    },
+                    "zone": {
+                        "type": "long"
+                    },
+                    "suburb": {
+                        "type": "long"
+                    },
+                    "historicalstate": {
+                        "type": "long"
+                    },
+                    "historicalcounty": {
+                        "type": "long"
+                    },
+                    "aggregate": {
+                        "type": "long"
+                    },
+                    "state": {
+                        "type": "long"
+                    },
+                    "town": {
+                        "type": "long"
+                    },
+                    "continent": {
+                        "type": "long"
+                    },
+                    "timezone": {
+                        "type": "long"
+                    },
+                    "nearbyintersection": {
+                        "type": "long"
+                    },
+                    "miscellaneous": {
+                        "type": "long"
+                    },
+                    "supername": {
+                        "type": "long"
+                    },
+                    "localadmin": {
+                        "type": "long"
+                    },
+                    "country": {
+                        "type": "long"
+                    },
+                    "colloquial": {
+                        "type": "long"
+                    },
+                    "landfeature": {
+                        "type": "long"
+                    },
+                    "street": {
+                        "type": "long"
+                    },
+                    "sea": {
+                        "type": "long"
+                    },
+                    "county": {
+                        "type": "long"
+                    },
+                    "region": {
+                        "type": "long"
+                    },
+                    "nationality": {
+                        "type": "long"
+                    },
+                    "historicaltown": {
+                        "type": "long"
+                    },
+                    "island": {
+                        "type": "long"
+                    },
+                    "ocean": {
+                        "type": "long"
+                    },
+                    "airport": {
+                        "type": "long"
+                    },
+                    "sport": {
+                        "type": "long"
+                    },
+                    "unknown": {
+                        "type": "long"
+                    },
+                    "drainage": {
+                        "type": "long"
+                    },
+                    "estate": {
+                        "type": "long"
                     }
                 }
             },
-            "woe:name" : {
-                "type" : "text",
+            "woe:lang": {
+                "type": "text",
+                "fields": {
+                    "keyword": {
+                        "type": "keyword",
+                        "ignore_above": 256
+                    }
+                }
+            },
+            "woe:name": {
+                "type": "text",
                 "analyzer": "english",
                 "search_analyzer": "english",
-                "copy_to": [ "names_all", "names_not_analyzed", "names_autocomplete" ]
+                "copy_to": [
+                    "names_all",
+                    "names_not_analyzed",
+                    "names_autocomplete"
+                ]
             },
-            "woe:placetype" : {
-                "type" : "long"
+            "woe:placetype": {
+                "type": "long"
             },
-            "woe:placetype_name" : {
-                "type" : "text"
+            "woe:placetype_name": {
+                "type": "text"
             },
-            "woe:timezone_id" : {
-                "type" : "long"
+            "woe:timezone_id": {
+                "type": "long"
             },
-            "woe:id" : {
-                "type" : "long"
+            "woe:id": {
+                "type": "long"
             },
-            "woe:adjacent" : {
-                "type" : "long"
+            "woe:adjacent": {
+                "type": "long"
             },
-            "woe:parent_id" : {
-                "type" : "long"
+            "woe:parent_id": {
+                "type": "long"
             },
-            "woe:superseded_by" : {
-                "type" : "long"
+            "woe:superseded_by": {
+                "type": "long"
             },
-            "woe:supersedes" : {
-                "type" : "long"
+            "woe:supersedes": {
+                "type": "long"
             },
             "woe:repo": {
                 "type": "keyword"
             },
-            "woe:bbox" : {
-                "type" : "float"
+            "woe:bbox": {
+                "type": "float"
             },
-            "woe:centroid" : {
-                "type" : "float"
+            "woe:centroid": {
+                "type": "float"
             },
-            "woe:latitude" : {
-                "type" : "float"
+            "woe:latitude": {
+                "type": "float"
             },
-            "woe:longitude" : {
-                "type" : "float"
+            "woe:longitude": {
+                "type": "float"
             },
-            "woe:max_latitude" : {
-                "type" : "float"
+            "woe:max_latitude": {
+                "type": "float"
             },
-            "woe:max_longitude" : {
-                "type" : "float"
+            "woe:max_longitude": {
+                "type": "float"
             },
-            "woe:min_latitude" : {
-                "type" : "float"
+            "woe:min_latitude": {
+                "type": "float"
             },
-            "woe:min_longitude" : {
-                "type" : "float"
+            "woe:min_longitude": {
+                "type": "float"
             },
             "woe:hash": {
                 "type": "text"
