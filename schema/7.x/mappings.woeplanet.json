@@ -181,7 +181,7 @@
                 "type": "float"
             },
             "fs:hash": {
-                "type": "text"
+                "type": "keyword"
             },
             "fs:label": {
                 "type": "text",
@@ -216,13 +216,13 @@
                 "type": "float"
             },
             "geom:hash": {
-                "type": "text"
+                "type": "keyword"
             },
             "iso:country": {
-                "type": "text"
+                "type": "keyword"
             },
             "iso:country3": {
-                "type": "text"
+                "type": "keyword"
             },
             "meta:indexed": {
                 "type": "date",
@@ -260,7 +260,7 @@
                 "type": "float"
             },
             "ne:hash": {
-                "type": "text"
+                "type": "keyword"
             },
             "qs:bbox": {
                 "type": "float"
@@ -287,12 +287,12 @@
                 "type": "float"
             },
             "qs:hash": {
-                "type": "text"
+                "type": "keyword"
             },
             "woe:concordances": {
                 "properties": {
                     "fs:id": {
-                        "type": "text"
+                        "type": "keyword"
                     },
                     "gn:id": {
                         "type": "long"
@@ -301,7 +301,7 @@
                         "type": "long"
                     },
                     "iata:code": {
-                        "type": "text"
+                        "type": "keyword"
                     },
                     "wof:id": {
                         "type": "long"
@@ -462,7 +462,7 @@
                 "type": "long"
             },
             "woe:placetype_name": {
-                "type": "text"
+                "type": "keyword"
             },
             "woe:timezone_id": {
                 "type": "long"
@@ -510,7 +510,7 @@
                 "type": "float"
             },
             "woe:hash": {
-                "type": "text"
+                "type": "keyword"
             }
         }
     }
